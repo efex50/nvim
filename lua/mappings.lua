@@ -28,6 +28,14 @@ vim.g.mapleader = " "
 map("n", "<leader>w", ":w<CR>", opts)
 map("n", "<leader>q", ":q<CR>", opts)
 
+-- pencereler
+map("n", "<leader>l", ":tabnext<CR>",opts)
+map("n", "<leader>h", ":tabprevious<CR>",opts)
+map("n", "<leader>T", ":tabnew<CR>",opts)
+
+-- e tuşu ileri
+-- b tuşu geri
+
 
 -- terminal aç
 map('n', '<leader>t', ':split term://$SHELL<CR>', { noremap = true, silent = true })

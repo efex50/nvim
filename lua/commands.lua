@@ -12,3 +12,22 @@ function Det()
 end
 
 vim.api.nvim_create_user_command("Det", Det, {} )
+
+function lolo()
+    local col = vim.fn.col('.')
+
+    print(col)
+end
+
+vim.api.nvim_create_user_command("Lol",lolo,{})
+
+-- insert moda geçince cursor bi sağa
+vim.api.nvim_create_autocmd("InsertEnter", {
+    callback = function()
+        vim.cmd("normal! l")
+    end,
+})
+
+
+vim.opt.virtualedit = "onemore"
+

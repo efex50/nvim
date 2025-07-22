@@ -7,13 +7,20 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ["<Tab>"] = cmp.mapping.select_next_item(),
-    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-  }),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<S-j>"] = cmp.mapping.scroll_docs(-4),
+        ["<S-k>"] = cmp.mapping.scroll_docs(4),
+
+    }),
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
+    { name = "buffer" },
+    { name = "emoji" },
+    { name = "path" },
     -- { name = "path" }, { name = "buffer" } gibi ek kaynaklar da olur
   },
 })
@@ -27,6 +34,7 @@ vim.g.mapleader = " "
 
 map("n", "<leader>w", ":w<CR>", opts)
 map("n", "<leader>q", ":q<CR>", opts)
+
 
 -- pencereler
 map("n", "<leader>l", ":tabnext<CR>",opts)

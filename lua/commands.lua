@@ -2,8 +2,12 @@
 
 function Det()
     local command = "shpool detach $SHPOOL_SESSION_NAME"
-    vim.fn.system(command) 
--- buraya istediğin Lua kodlarını yaz
+    local result = vim.fn.system(command) 
+    local err = vim.v.shell_error
+    if err ~= 0  then
+        print("Zaten bir havuza bağlı değil")
+    end
+
 
 end
 

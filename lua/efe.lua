@@ -8,7 +8,7 @@ function _G.clock()
   return os.date("%H:%M")
 end
 
-vim.fn.timer_start(15000, function()
+vim.fn.timer_start(1000, function()
   vim.cmd("redrawstatus")
 end, { ["repeat"] = -1 })
 
@@ -53,4 +53,4 @@ end
 
 
 
-vim.opt.statusline = [[%f %h%m%r %= %l,%c %{v:lua.battery()} | %{v:lua.clock()}]]
+vim.opt.statusline = [[%f %h%m%r %= %l/%L:%c %{v:lua.battery()} | %{v:lua.clock()}]]

@@ -11,8 +11,8 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<S-j>"] = cmp.mapping.scroll_docs(-4),
-        ["<S-k>"] = cmp.mapping.scroll_docs(4),
+        ["<S-k>"] = cmp.mapping.scroll_docs(-4),
+        ["<S-j>"] = cmp.mapping.scroll_docs(4),
 
     }),
   sources = {
@@ -40,9 +40,24 @@ map("n", "<leader>q", ":q<CR>", opts)
 map("n", "<leader>l", ":tabnext<CR>",opts)
 map("n", "<leader>h", ":tabprevious<CR>",opts)
 map("n", "<leader>T", ":tabnew<CR>",opts)
-
+map("n", "<leader>c", ":ClearTab<CR>",opts)
 -- e tuşu ileri
+vim.keymap.set("n","e","el",opts)
+
+vim.keymap.set("n","ı","i",opts)
 -- b tuşu geri
+
+
+map("n", "-", function()
+  require("telescope").extensions.file_browser.file_browser({
+    path = vim.fn.expand("%:p:h"),
+    select_buffer = true,
+    grouped = true,
+    hidden = true,
+    respect_gitignore = false,
+  })
+end, { desc = "File Browser like netrw" })
+
 
 
 -- terminal aç

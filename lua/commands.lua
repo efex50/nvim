@@ -13,13 +13,13 @@ end
 
 vim.api.nvim_create_user_command("Det", Det, {} )
 
-function lolo()
-    local col = vim.fn.col('.')
 
-    print(col)
+function ClearTab()
+    vim.cmd("only")
+    vim.cmd("enew")
 end
 
-vim.api.nvim_create_user_command("Lol",lolo,{})
+vim.api.nvim_create_user_command("ClearTerm",ClearTab,{})
 
 -- insert moda geçince cursor bi sağa
 vim.api.nvim_create_autocmd("InsertEnter", {

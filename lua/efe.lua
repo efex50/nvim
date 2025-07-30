@@ -3,19 +3,42 @@ local result = vim.fn.system("cat ~/.path")
 vim.env.PATH = result
 
 
+
+
+-- argları alma
+local function arglar()
+    local args = vim.v.argv
+    local path = args[3]
+    if path == nil then
+        return
+    end
+    local parent = path:match("(.*/)[^/]*$")
+    if parent == nil then
+        parent = path
+    end
+
+    local comm = "cd " .. parent
+    
+    local stat, result = pcall(vim.cmd,comm)
+end
+arglar()
+
+
 -- Saat gösterme
 function _G.clock()
-  return os.date("%H:%M")
+    return os.date("%H:%M")
 end
 
 vim.fn.timer_start(1000, function()
-  vim.cmd("redrawstatus")
+    vim.cmd("redrawstatus")
 end, { ["repeat"] = -1 })
+
+
 
 
 -- batarya gösterimi
 function _G.battery()
-  local base = "/sys/class/power_supply/BAT0/"
+    local base = "/sys/class/power_supply/BAT0/"
   local capacity_f = io.open(base .. "capacity", "r")
   local status_f = io.open(base .. "status", "r")
 

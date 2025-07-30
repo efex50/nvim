@@ -36,6 +36,9 @@ map("n", "<leader>w", ":w<CR>", opts)
 map("n", "<leader>q", ":q<CR>", opts)
 
 
+-- Shpool detach
+map("n", "<leader>d",":Det<CR>",opts)
+
 -- pencereler
 map("n", "<leader>l", ":tabnext<CR>",opts)
 map("n", "<leader>h", ":tabprevious<CR>",opts)

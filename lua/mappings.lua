@@ -34,10 +34,11 @@ vim.g.mapleader = " "
 
 map("n", "<leader>w", ":w<CR>", opts)
 map("n", "<leader>q", ":q<CR>", opts)
+map("n", "<leader>d", ":bd<CR>", opts)
 
 
 -- Shpool detach
-map("n", "<leader>d",":Det<CR>",opts)
+map("n", "<leader>D",":Det<CR>",opts)
 
 -- pencereler
 map("n", "<leader>l", ":tabnext<CR>",opts)
@@ -51,7 +52,7 @@ vim.keymap.set("n","ı","i",opts)
 -- b tuşu geri
 
 
-map("n", "-", function()
+map("n", "<BS>", function()
   require("telescope").extensions.file_browser.file_browser({
     path = vim.fn.expand("%:p:h"),
     select_buffer = true,

@@ -18,7 +18,6 @@ local function arglar()
     end
 
     local comm = "cd " .. parent
-    
     local stat, result = pcall(vim.cmd,comm)
 end
 arglar()
@@ -52,13 +51,13 @@ function _G.battery()
   status_f:close()
 
   local discharging_icons = {
-    [0] = "󰁺", [10] = "󰁻", [20] = "󰁼", [30] = "󰁽", [40] = "󰁾",
-    [50] = "󰁿", [60] = "󰂀", [70] = "󰂁", [80] = "󰂂", [90] = "󰂃", [100] = "󰁹"
+    [0] = "󰁺", [10] = "󰁺", [20] = "󰁻", [30] = "󰁼", [40] = "󰁽",
+    [50] = "󰁾", [60] = "󰁿", [70] = "󰂀", [80] = "󰂁", [90] = "󰂂", [100] = "󰁹"
   }
 
   local charging_icons = {
-    [0] = "󰢜", [10] = "󰢝", [20] = "󰢞", [30] = "󰢟", [40] = "󰢠",
-    [50] = "󰢡", [60] = "󰢢", [70] = "󰢣", [80] = "󰢤", [90] = "󰢥", [100] = "󰂅"
+    [0] = "󰢟", [10] = "󰢜", [20] = "󰂆", [30] = "󰂇", [40] = "󰂈",
+    [50] = "󰢝", [60] = "󰂉", [70] = "󰢞", [80] = "󰂊", [90] = "󰂋", [100] = "󰂅"
   }
 
   local rounded = math.floor(percent / 10) * 10
@@ -76,4 +75,32 @@ end
 
 
 
+-- warningleri gösterme
+vim.api.nvim_create_autocmd("CursorHold",{
+    callback = function ()
+        vim.diagnostic.open_float(nil,{
+            focus=false,
+            --border="rounded",
+            severity_sort = true,
+        })
+    end
+})
+-- güncelleme süresü ms cinsinden
+vim.o.updatetime = 500
+
+
+
+
+-- Yeni renk grubu oluştur
+vim.api.nvim_set_hl(0, "WinBarActive", { fg = "#FFD700", bg = "#0f0f0f", bold = true })
+
+
+
+
+vim.opt.laststatus = 3
+vim.opt.winbar = [[%#WinBarActive# %f %h%m%r %= %#Normal#]]
+
 vim.opt.statusline = [[%f %h%m%r %= %l/%L:%c %{v:lua.battery()} | %{v:lua.clock()}]]
+
+
+

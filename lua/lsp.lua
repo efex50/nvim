@@ -5,7 +5,7 @@ lspconfig.rust_analyzer.setup({
   settings = {
     ["rust-analyzer"] = {
       cargo = { allFeatures = true },
-      checkOnSave = { command = "clippy" },
+      checkOnSave = true,
     },
   },
 })
@@ -42,4 +42,11 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+
+
+lspconfig.clangd.setup {
+    cmd = { "clangd" },
+    filetypes = { "c", "cpp", "objc", "objcpp" },
+    root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+}
 
